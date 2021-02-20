@@ -63,9 +63,8 @@ class HashTable:
 
             else:
                 pointer = (pointer + 1) % self.size
-
-        print("The table is full :/ ")
-        return -1
+        self.arr[key_hash].append((key, value))
+        return key_hash
 
     # 4️⃣ TODO: Complete the print_key_values method.
 
@@ -79,4 +78,10 @@ class HashTable:
     # erase: 2
 
     def print_key_values(self):
-        pass
+
+        if self.size == None:
+            print("empty")
+            return -1
+        else:
+            for i in self.arr:
+                i.print_nodes()
