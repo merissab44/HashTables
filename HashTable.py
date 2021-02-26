@@ -47,12 +47,12 @@ class HashTable:
     def insert(self, key, value):
         # Find the index where the key value should be placed
         key_hash = self.hash_func(key)
-        new_tuple = (key, value)
-        # If the find method returns -1, it's empty so create a new tuple and append to the hash table
-        if self.arr[key_hash].find(new_tuple) == -1:
-            self.arr[key_hash].append(new_tuple)
-        # Else if we find an existing tuple, add one to the frequency and return the key hash
-        elif self.arr[key_hash].find(new_tuple) == True:
+        new_data = (key, value)
+        # If the find method returns -1, the key was not found so create a new tuple and append to the hash table
+        if self.arr[key_hash].find(new_data) == -1:
+            self.arr[key_hash].append(new_data)
+        # Else if we find an existing key, add one to the frequency and return the key hash
+        elif self.arr[key_hash].find(new_data) == True:
             return self.arr[key_hash]
 
     # 4️⃣ TODO: Complete the print_key_values method.

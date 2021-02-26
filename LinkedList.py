@@ -27,8 +27,8 @@ class LinkedList:
                 counter += 1
         # if the name is the same, overwrite the name but add one to the frequency
         if found:
-            new_tuple = (current.data[0], (current.data[1] + 1))
-            current.data = new_tuple
+            new_data = (current.data[0], (current.data[1] + 1))
+            current.data = new_data
         else:
             return -1
 
