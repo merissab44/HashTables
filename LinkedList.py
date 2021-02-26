@@ -20,14 +20,15 @@ class LinkedList:
 
         while current != None and not found:
 
-            if current.data == item:
+            if current.data[0] == item[0]:
                 found = True
             else:
                 current = current.next
                 counter += 1
-
+        # if the name is the same, overwrite the name but add one to the frequency
         if found:
-            return counter
+            new_tuple = (current.data[0], (current.data[1] + 1))
+            current.data = new_tuple
         else:
             return -1
 
@@ -49,5 +50,6 @@ class LinkedList:
             print('The linked list is empty.')
         else:
             for i in range(self.length()):
-                print(f'Node {i}: {current.data}')
+                # using [0] to print key and [1] to print the value
+                print(f'{current.data[0]}: {current.data[1]}')
                 current = current.next

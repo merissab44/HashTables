@@ -1,5 +1,7 @@
 from LinkedList import LinkedList
 
+# Shout out to Jordan and Brian!!
+
 
 class HashTable:
 
@@ -45,26 +47,13 @@ class HashTable:
     def insert(self, key, value):
         # Find the index where the key value should be placed
         key_hash = self.hash_func(key)
-
-        # Check to see if the bucket is empty
-        if self.arr[key_hash] == None:
-            # If it's empty, place the key value pair there
-            self.arr[key_hash] = (key, value)
-            return key_hash
-        # Else if there's a collision
-        else:
-            pointer = (key_hash + 1) % self.size
-
-        #
-        while pointer != key_hash:
-            if self.arr[pointer] == None:
-                self.arr[pointer] = (key, value)
-                return pointer
-
-            else:
-                pointer = (pointer + 1) % self.size
-        self.arr[key_hash].append((key, value))
-        return key_hash
+        new_tuple = (key, value)
+        # If the find method returns -1, it's empty so create a new tuple and append to the hash table
+        if self.arr[key_hash].find(new_tuple) == -1:
+            self.arr[key_hash].append(new_tuple)
+        # Else if we find an existing tuple, add one to the frequency and return the key hash
+        elif self.arr[key_hash].find(new_tuple) == True:
+            return self.arr[key_hash]
 
     # 4️⃣ TODO: Complete the print_key_values method.
 
